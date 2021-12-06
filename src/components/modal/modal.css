@@ -1,0 +1,58 @@
+.modalWrapper {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  z-index: 1001;
+  height: 60%;
+  width: 50%;
+  background-color: white;
+  display: flex;
+}
+.modalLeft {
+  flex: 6;
+  background-color: #0575e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalLeft-title {
+  color: white;
+  font-family: "Pattaya", sans-serif;
+  letter-spacing: 3px;
+  font-size: 2rem;
+}
+
+.modalRight {
+  flex: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modalInput {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 2px solid #0575e6;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+}
+
+.modalInput:focus {
+  outline: none;
+}
+
+.closeButton {
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  color: #0575e6;
+}

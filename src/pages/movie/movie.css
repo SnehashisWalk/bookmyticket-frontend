@@ -1,0 +1,311 @@
+.wrapperSection {
+  height: calc(100vh - 55px);
+  background: #fff;
+}
+
+.movieSectionTop {
+  height: 60%;
+  background: #fff;
+  position: relative;
+  display: flex;
+}
+
+.movieSectionTopLeft {
+  flex: 4.5;
+  height: 100%;
+}
+
+.movieSectionTopRight {
+  flex: 7.5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-book {
+  background-color: #0575e6 !important;
+  color: white !important;
+  width: 50%;
+}
+
+.movie-poster {
+  height: 100%;
+  width: 18%;
+  object-fit: fill;
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.movieSectionBottom {
+  height: 40%;
+  background-color: black;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  color: white;
+  position: relative;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.about-wrapper-title {
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  width: 70%;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+.about-wrapper {
+  position: absolute;
+  overflow-y: scroll;
+  height: 50%;
+  z-index: 10000;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+.aboutMovieSection {
+  height: 100vh;
+  background-color: black;
+  position: relative;
+}
+
+.cast-title {
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 5%;
+  left: 15%;
+}
+
+.castCarouselWrapper {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 40%;
+  background-color: white;
+  display: flex;
+}
+
+.carouselLeftControl {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.carouselContentArea {
+  flex: 10;
+  display: flex;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+}
+.carouselRightControl {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.castPrevBtn,
+.castNextBtn {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  color: #000 !important;
+  border-radius: 50% !important;
+  padding: 20px !important;
+}
+
+.castPrevBtn:hover,
+.castNextBtn:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.star-item {
+  transition: all 0.6s ease-in-out;
+  height: 100%;
+  width: 20%;
+  margin-right: 30px;
+  justify-content: space-between;
+}
+
+/* .item-2 {
+  left: calc(1 * 25%);
+}
+
+.item-3 {
+  left: calc(2 * 25%);
+}
+.item-4 {
+  left: calc(3 * 25%);
+}
+.item-5 {
+  left: calc(4 * 25%);
+} */
+
+.cast-img-container {
+  height: 60%;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.cast-img-container > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.star-name {
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin: 0;
+  color: white;
+}
+
+.crew-title {
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  left: 15%;
+}
+
+.crewCarouselWrapper {
+  position: absolute;
+  top: 60%;
+  left: 15%;
+  width: 70%;
+  height: 40%;
+  background-color: white;
+  display: flex;
+}
+
+.other-movies-ref {
+  height: 100vh;
+  position: relative;
+  background-color: #000;
+}
+
+.other-movies-ref-title {
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 5%;
+  left: 15%;
+}
+
+.other-movies-CarouselWrapper {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 45%;
+  background-color: white;
+  display: flex;
+}
+
+.other-movie-item {
+  transition: all 0.6s ease-in-out;
+  height: 100%;
+  width: 20%;
+  margin-right: 30px;
+}
+
+.other-movie-img-container {
+  height: 90%;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.other-movie-img-container > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.offers-title {
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 67%;
+  left: 15%;
+}
+
+.offers-div {
+  position: absolute;
+  top: 75%;
+  left: 15%;
+  width: 70%;
+  height: 15%;
+  background-color: black;
+  display: flex;
+}
+
+.offers-div-left {
+  flex: 6;
+  height: 100%;
+  background-color: rgb(255, 243, 210);
+  margin-right: 5%;
+  border-radius: 10px;
+  border: 2px dashed rgb(250, 110, 45);
+  display: flex;
+}
+.offers-div-right {
+  flex: 6;
+  height: 100%;
+  background-color: rgb(255, 243, 210);
+  margin-right: 5%;
+  border-radius: 10px;
+  border: 2px dashed rgb(250, 110, 45);
+  display: flex;
+}
+
+.offer-logo {
+  flex: 3;
+}
+.offer-logo > img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.offer-details {
+  flex: 9;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-logo-title {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+
+.offer-logo-desc {
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
