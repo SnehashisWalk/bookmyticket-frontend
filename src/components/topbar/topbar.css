@@ -1,0 +1,110 @@
+:root {
+  --primary: rgb(226, 43, 43);
+  --pure: white;
+}
+
+.topbarWrapper {
+  display: flex;
+  height: 55px;
+}
+
+.topbarLeft {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.topbarCenter {
+  flex: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  height: 33px;
+  padding-left: 20px;
+  letter-spacing: 2px;
+}
+
+.searchInput::placeholder {
+}
+
+.topbarRight {
+  flex: 3;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.pri-btn,
+.sec-btn {
+  letter-spacing: 2px !important;
+  padding: 6px 18px !important;
+}
+
+.pri-btn {
+  color: white !important;
+  background-color: #0575e6 !important;
+}
+
+.sec-btn:hover {
+  color: white !important;
+  background-color: #0575e6 !important;
+  padding: 6px 18px !important;
+  transition: all 0.2s ease-in;
+}
+
+/***** topbar with 768px breakpoint *****/
+
+.topbarWrapper768,.topbarLeft768,.topbarRight768,.topbarCenter768 {
+  display: none;
+}
+
+
+/******* MEDIA QUERIES ********/
+
+@media (max-width: 768px) {
+
+  .topbarWrapper,.topbarLeft,.topbarRight,.topbarCenter {
+    display: none;
+  }
+
+  .topbarWrapper768 {
+    display: flex;
+    height: 55px;
+  }
+  
+  .topbarLeft768 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .topbarCenter768 {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topbarRight768 {
+    flex: 8;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+/******************************/

@@ -1,0 +1,30 @@
+.side-menubar-wrapper {
+  height: calc(100vh - 95px);
+  background-color: #009ffd;
+  padding: 20px;
+}
+
+.side-menubar-list {
+  margin: 0;
+  list-style: none;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.menu-item {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: larger;
+  font-weight: 900;
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 20vw;
+}
+
+.menu-item:hover {
+  border: 2px solid #fff;
+}

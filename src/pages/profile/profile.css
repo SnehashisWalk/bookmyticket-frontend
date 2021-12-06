@@ -1,0 +1,141 @@
+.profile-wrapper {
+  height: calc(100vh - 55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-nav {
+  flex: 3;
+  background-color: #0575e6;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profile-nav-options {
+  list-style: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 3;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+  margin-top: 40%;
+  cursor: pointer;
+}
+
+.profile-nav-options > li {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.profile-nav-options > li:hover {
+  background-color: white;
+  color: #0575e6;
+  transition: all ease-in 0.3s;
+}
+
+.profile-content-area {
+  flex: 9;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-content-wrapper {
+  width: 80%;
+  height: 80%;
+  background-color: #0575e6;
+}
+
+.profile-content-header {
+  color: white;
+  width: 100%;
+}
+
+.profile-content-header > h2 {
+  margin: 0;
+  padding: 10px 0 0 20px;
+  letter-spacing: 2px;
+}
+
+.profile-content {
+  margin: 2%;
+  height: 80%;
+  border: 2px dashed white;
+  color: white;
+  padding: 10px;
+  letter-spacing: 2px;
+  line-height: 2.5;
+}
+
+.profile-content-row {
+  display: flex;
+  align-items: center;
+}
+
+.profile-content-row > h2,
+h3 {
+  margin: 0 50px 0 0;
+}
+
+.booking-content {
+  margin: 2%;
+  height: 80%;
+  border: 2px dashed white;
+  color: white;
+  padding: 10px;
+  letter-spacing: 2px;
+  line-height: 2.5;
+  overflow-y: scroll;
+}
+
+.booked-item {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.expired {
+  background-color: gray;
+}
+
+.booked-item:hover {
+  background-color: white;
+  color: #0575e6;
+  transition: all ease-in 0.3s;
+}
+
+.booked-item-image {
+  flex: 3;
+}
+
+.booked-item-image > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.booked-item-info {
+  flex: 7;
+}
+
+.booked-item-title {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.booked-item-seat {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 50px;
+}
