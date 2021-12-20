@@ -104,42 +104,89 @@ export function Carousel() {
 /*********** CAROUSEL ITEM 2 *****************/
 
 let iterator1 = [1, 2, 3, 4, 5, 0, 0, 0, 0, 0];
+let iterator2 = [1, 2, 3, 0, 0, 0, 0, 0, 0, 0];
 export function Carousel2() {
-  const [counter, setCounter] = useState({
-    id1: 1,
-    id2: 2,
-    id3: 3,
-    id4: 4,
-    id5: 5,
-    id6: 0,
-    id7: 0,
-    id8: 0,
-    id9: 0,
-    id10: 0,
-  });
-  const [controlCount, setControlCount] = useState(0);
+  const getWindowDimensions = () => {
+    // const { innerwidth: width, innerheight: height } = window;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    return {
+      width,
+      height,
+    };
+  };
+
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+      console.log("res");
+      setCounter((prev) => {
+        console.log(assign());
+        return assign();
+      });
+      console.log(counter);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const assign = () => {
+    if (windowDimensions.width <= 768) {
+      console.log("small");
+      return {
+        id1: 1,
+        id2: 2,
+        id3: 3,
+        id4: 0,
+        id5: 0,
+        id6: 0,
+        id7: 0,
+        id8: 0,
+        id9: 0,
+        id10: 0,
+      };
+    } else {
+      return {
+        id1: 1,
+        id2: 2,
+        id3: 3,
+        id4: 4,
+        id5: 5,
+        id6: 0,
+        id7: 0,
+        id8: 0,
+        id9: 0,
+        id10: 0,
+      };
+    }
+  };
+  const [counter, setCounter] = useState(assign());
+
+  // useEffect(() => {
+  //   console.log("assign");
+  //   setCounter(assign());
+  // }, []);
 
   const handlePrev = () => {
     switch (iterator1.indexOf(5)) {
       case 5:
         iterator1 = [1, 2, 3, 4, 5, 0, 0, 0, 0, 0];
-        setControlCount((controlCount) => controlCount - 1);
         break;
       case 6:
         iterator1 = [0, 1, 2, 3, 4, 5, 0, 0, 0, 0];
-        setControlCount((controlCount) => controlCount - 1);
         break;
       case 7:
         iterator1 = [0, 0, 1, 2, 3, 4, 5, 0, 0, 0];
-        setControlCount((controlCount) => controlCount - 1);
         break;
       case 8:
         iterator1 = [0, 0, 0, 1, 2, 3, 4, 5, 0, 0];
-        setControlCount((controlCount) => controlCount - 1);
         break;
       case 9:
         iterator1 = [0, 0, 0, 0, 1, 2, 3, 4, 5, 0];
-        setControlCount((controlCount) => controlCount - 1);
         break;
       default:
         break;
@@ -160,30 +207,47 @@ export function Carousel2() {
   };
 
   const handleNext = () => {
+    if (windowDimensions.width <= 768) {
+      switch (iterator2.indexOf(1)) {
+        case 0:
+          iterator2 = [0, 1, 2, 3, 0, 0, 0, 0, 0, 0];
+          break;
+        case 1:
+          iterator2 = [0, 0, 1, 2, 3, 0, 0, 0, 0, 0];
+          break;
+        case 2:
+          iterator2 = [0, 0, 0, 1, 2, 3, 0, 0, 0, 0];
+          break;
+        case 3:
+          iterator2 = [0, 0, 0, 0, 1, 2, 3, 0, 0, 0];
+          break;
+        case 4:
+          iterator2 = [0, 0, 0, 0, 0, 1, 2, 3, 0, 0];
+          break;
+        default:
+          break;
+      }
+    }
     switch (iterator1.indexOf(1)) {
       case 0:
         iterator1 = [0, 1, 2, 3, 4, 5, 0, 0, 0, 0];
-        setControlCount((controlCount) => controlCount + 1);
         break;
       case 1:
         iterator1 = [0, 0, 1, 2, 3, 4, 5, 0, 0, 0];
-        setControlCount((controlCount) => controlCount + 1);
         break;
       case 2:
         iterator1 = [0, 0, 0, 1, 2, 3, 4, 5, 0, 0];
-        setControlCount((controlCount) => controlCount + 1);
         break;
       case 3:
         iterator1 = [0, 0, 0, 0, 1, 2, 3, 4, 5, 0];
-        setControlCount((controlCount) => controlCount + 1);
         break;
       case 4:
         iterator1 = [0, 0, 0, 0, 0, 1, 2, 3, 4, 5];
-        setControlCount((controlCount) => controlCount + 1);
         break;
       default:
         break;
     }
+
     let myctr = {
       id1: iterator1[0],
       id2: iterator1[1],
@@ -201,56 +265,275 @@ export function Carousel2() {
   return (
     <div className="carousel2">
       <div className="carousel2-container">
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id1}`}
-          src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
-          alt="1917"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id2}`}
-          src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
-          alt="underwater"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id3}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
-          alt="Justice League"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id4}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
-          alt="Wrath of Man"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id5}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
-          alt="The Courier"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id6}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
-          alt="Thunder Force"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id7}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
-          alt="Luca"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id8}`}
-          src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
-          alt="Boss Baby"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id9}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
-          alt="The Tomorrow War"
-        />
-        <img
-          className={`carousel2-item carousel2-item-vis-${counter.id10}`}
-          src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
-          alt="The Misfits"
-        />
+        <h1 style={{ color: "white", zIndex: 999 }}>
+          {windowDimensions.width}
+        </h1>
+        {windowDimensions.width > 1368 ? (
+          <>
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id1}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
+              alt="1917"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id2}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
+              alt="underwater"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id3}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
+              alt="Justice League"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id4}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
+              alt="Wrath of Man"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id5}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
+              alt="The Courier"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id6}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
+              alt="Thunder Force"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id7}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
+              alt="Luca"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id8}`}
+              src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
+              alt="Boss Baby"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id9}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
+              alt="The Tomorrow War"
+            />
+            <img
+              className={`carousel2-item carousel2-item-vis-${counter.id10}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
+              alt="The Misfits"
+            />
+          </>
+        ) : windowDimensions.width > 1280 && windowDimensions.width < 1368 ? (
+          <>
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id1}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
+              alt="1917"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id2}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
+              alt="underwater"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id3}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
+              alt="Justice League"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id4}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
+              alt="Wrath of Man"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id5}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
+              alt="The Courier"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id6}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
+              alt="Thunder Force"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id7}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
+              alt="Luca"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id8}`}
+              src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
+              alt="Boss Baby"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id9}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
+              alt="The Tomorrow War"
+            />
+            <img
+              className={`carousel2-item-1368 carousel2-item-vis-${counter.id10}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
+              alt="The Misfits"
+            />
+          </>
+        ) : windowDimensions.width > 1080 && windowDimensions.width < 1280 ? (
+          <>
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id1}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
+              alt="1917"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id2}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
+              alt="underwater"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id3}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
+              alt="Justice League"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id4}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
+              alt="Wrath of Man"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id5}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
+              alt="The Courier"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id6}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
+              alt="Thunder Force"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id7}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
+              alt="Luca"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id8}`}
+              src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
+              alt="Boss Baby"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id9}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
+              alt="The Tomorrow War"
+            />
+            <img
+              className={`carousel2-item-1280 carousel2-item-vis-${counter.id10}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
+              alt="The Misfits"
+            />
+          </>
+        ) : windowDimensions.width > 768 && windowDimensions.width < 1080 ? (
+          <>
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id1}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
+              alt="1917"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id2}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
+              alt="underwater"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id3}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
+              alt="Justice League"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id4}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
+              alt="Wrath of Man"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id5}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
+              alt="The Courier"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id6}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
+              alt="Thunder Force"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id7}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
+              alt="Luca"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id8}`}
+              src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
+              alt="Boss Baby"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id9}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
+              alt="The Tomorrow War"
+            />
+            <img
+              className={`carousel2-item-1080 carousel2-item-vis-${counter.id10}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
+              alt="The Misfits"
+            />
+          </>
+        ) : (
+          <>
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id1}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/nineteen_seventeen_poster-1.jpg"
+              alt="1917"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id2}`}
+              src="https://www.joblo.com/wp-content/uploads/2019/08/underwater-poster-xl-1.jpg"
+              alt="underwater"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id3}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/Zack-Snyder-Justice-League-Poster-Key-Art-1.jpg"
+              alt="Justice League"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id4}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/wrath-of-man-guy-ritchie-action-thriller-1.jpg"
+              alt="Wrath of Man"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id5}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/03/THE-COURIER-Poster-scaled-2.jpg"
+              alt="The Courier"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id6}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/thunder-force-netflix-151308-1.jpg"
+              alt="Thunder Force"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id7}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/04/luca-disney-pixar-trailer-poster-2021-1.jpg"
+              alt="Luca"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id8}`}
+              src="https://www.joblo.com/wp-content/uploads/2020/11/boss_baby_family_business_xlg-1.jpg"
+              alt="Boss Baby"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id9}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/rsz_tomorrow-war-1.jpg"
+              alt="The Tomorrow War"
+            />
+            <img
+              className={`carousel2-item-768 carousel2-item-vis-${counter.id10}`}
+              src="https://www.joblo.com/wp-content/uploads/2021/06/misfits-poster-1.jpg"
+              alt="The Misfits"
+            />
+          </>
+        )}
       </div>
       <div className="carousel2-controls">
         <Button className="prevBtn2" onClick={handlePrev}>
@@ -321,8 +604,6 @@ export function Carousel3() {
       payload: pageState,
     });
   };
-
-  console.log(upcomingMovieData);
 
   return (
     <div className="carousel3Wrapper">
