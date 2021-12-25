@@ -10,6 +10,7 @@ import { getSpecificMovie } from "../../apiCalls";
 import { PageContext } from "../../context/PageContext";
 import axios from "axios";
 import { formattedStringDate } from "../../components/helper/util";
+import { API } from "../../backend";
 
 export default function Movie() {
   const { dispatch, pageState } = useContext(PageContext);
@@ -18,10 +19,9 @@ export default function Movie() {
 
   useEffect(() => {
     const fetchMovieData = async () => {
-      const res = await axios.post(
-        `http://localhost:8800/api/movie/getSpecificMovie`,
-        { name: `${pageState.currentMovieNav}` }
-      );
+      const res = await axios.post(`${API}movie/getSpecificMovie`, {
+        name: `${pageState.currentMovieNav}`,
+      });
       console.log(new Date(res.data[0].release_date).getFullYear());
       setMovieData(res.data[0]);
     };

@@ -65,6 +65,7 @@ export const loadPageStateFromLocalStorage = () => {
 
 export const getSpecificMovie = async (movieName) => {
   try {
+    console.log("from here");
     return await axios
       .post(API + "movie/getSpecificMovie", {
         name: movieName,
